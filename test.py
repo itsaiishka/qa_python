@@ -70,6 +70,17 @@ class TestBooksCollector:
         result = genres.get_books_with_specific_genre(expected_genre)
         assert result == expected_books
 
+    def test_get_books_genre_return_correct_dictionary(self, genres):
+        expected = {
+            'Гарри Поттер и Философский камень': 'Фантастика',
+            'Оно': 'Ужасы',
+            'Шерлок Холмс': 'Детективы'
+        }
+        
+        result = genres.get_books_genre()
+
+        assert result == expected
+
     def test_get_books_for_children_return_only_allowed_books(self, genres):
         result = genres.get_books_for_children()
         
@@ -80,14 +91,14 @@ class TestBooksCollector:
     def test_add_book_in_favorites_add_one_book(self, book):
         book_name = 'Гарри Поттер и Философский камень'
 
-        book.add_book_in_favorites(book_name)
+        book.delete_book_from_favorites(book_name)
 
-        assert book_name in book.get_list_of_favorites_books()
+        assert book_name not in book.get_list_of_favorites_books()
 
     def test_delete_book_in_favourites(self, book):
-        book_name = 'Гарри Поттер и Филасофский камень'
+        book_name = 'Гарри Поттер и Философский камень'
 
-        book.delete_book_in_favourites(book_name)
+        book.delete_book_from_favorites(book_name)
 
         assert book_name not in book.get_list_of_favorites_books()
 

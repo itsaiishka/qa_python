@@ -26,5 +26,5 @@ def genres():
     collector.set_book_genre('Гарри Поттер и Философский камень', 'Фантастика')
     collector.set_book_genre('Оно', 'Ужасы')
     collector.set_book_genre('Шерлок Холмс', 'Детективы')
-    
+    return collector
         
