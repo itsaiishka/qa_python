@@ -91,13 +91,14 @@ class TestBooksCollector:
     def test_add_book_in_favorites_add_one_book(self, book):
         book_name = 'Гарри Поттер и Философский камень'
 
-        book.delete_book_from_favorites(book_name)
+        book.add_book_in_favorites(book_name)
 
-        assert book_name not in book.get_list_of_favorites_books()
+        assert book_name in book.get_list_of_favorites_books()
 
     def test_delete_book_in_favourites(self, book):
         book_name = 'Гарри Поттер и Философский камень'
 
+        book.add_book_in_favorites(book_name)
         book.delete_book_from_favorites(book_name)
 
         assert book_name not in book.get_list_of_favorites_books()
